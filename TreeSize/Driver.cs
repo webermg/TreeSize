@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TreeSize
 {
+
+    
 
     //stuff from java
 //    public static void main(String[] args) throws Exception
@@ -59,7 +63,49 @@ namespace TreeSize
 //    return Files.isReadable(Paths.get(f.getAbsolutePath()));
 //}
 
-class Driver
+public sealed class Driver
     {
+        //add a set to store already calculated directories so you don't have to calculate again
+        //set of pairs string,long
+        static Hashtable directories = new Hashtable();
+
+        //singleton instance definition
+        private static readonly Driver instance = new Driver();
+        private Driver() { }
+        public static Driver Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+        //end singleton instance definition
+
+        //function takes in input directory/path and returns total size
+        public static long getSize(string path)
+        {
+            long size = 0;
+
+            //if file, return length
+            //if directory
+            //  check table for path
+            //      if table contains path return size from table
+            //  get list of subdirectories
+            //  recurse for each subdir
+            //  get list of files
+            //  add lengths to size
+            //  add pathname and size to table
+
+            return size;    
+        }
+
+        //function takes in input path and returns array of child directories/files and sizes
+
+        //check if directory
+        public static Boolean isDirectory(string path)
+        {
+            FileAttributes attr = File.GetAttributes(path);
+            return attr.HasFlag(FileAttributes.Directory);
+        }
     }
 }
