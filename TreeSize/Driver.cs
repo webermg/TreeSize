@@ -82,11 +82,29 @@ public sealed class Driver
         //end singleton instance definition
 
         //function takes in input directory/path and returns total size
+        //break into 3 overloaded functions
+        public static long getSize(FileInfo file)
+        {
+
+        }
+
+        public static long getSize(DirectoryInfo directory)
+        {
+
+        }
         public static long getSize(string path)
         {
-            long size = 0;
+            
 
             //if file, return length
+            if (!isDirectory(path))
+            {
+                FileInfo current = new FileInfo(path);
+                return current.Length;
+            }
+            
+            long size = 0;
+
             //if directory
             //  check table for path
             //      if table contains path return size from table
